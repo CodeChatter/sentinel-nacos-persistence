@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 public final class NacosConfigUtil {
 
-    public static final String GROUP_ID = "SENTINEL_GROUP";
+    public static final String GROUP_ID = "test";
 
     public static final String FLOW_DATA_ID_POSTFIX = "-flow-rules";
     public static final String DEGRADE_DATA_ID_POSTFIX = "-degrade-rules";
@@ -78,7 +78,8 @@ public final class NacosConfigUtil {
 
         // 存储，给控制台显示使用,由于数据太多,会出现转化异常,虽然可以提供控制台显示,但是无法对微服务进行保护
         configService.publishConfig(
-                dataId + DASHBOARD_POSTFIX,
+//                dataId + DASHBOARD_POSTFIX,
+                dataId,
                 NacosConfigUtil.GROUP_ID,
                 JSONUtils.toJSONString(rules)
         );
@@ -97,7 +98,8 @@ public final class NacosConfigUtil {
      */
     public static <T> List<T> getRuleEntitiesFromNacos(ConfigService configService, String appName, String postfix, Class<T> clazz) throws NacosException {
         String rules = configService.getConfig(
-                genDataId(appName, postfix) + DASHBOARD_POSTFIX,
+//                genDataId(appName, postfix) + DASHBOARD_POSTFIX,
+                genDataId(appName, postfix),
                 NacosConfigUtil.GROUP_ID,
                 3000
         );
