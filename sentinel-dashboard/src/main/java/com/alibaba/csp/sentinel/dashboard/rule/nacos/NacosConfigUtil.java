@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 public final class NacosConfigUtil {
 
+    // TODO: 根据需要修改
     public static final String GROUP_ID = "test";
 
     public static final String FLOW_DATA_ID_POSTFIX = "-flow-rules";
